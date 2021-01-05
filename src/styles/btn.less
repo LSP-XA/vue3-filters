@@ -1,0 +1,57 @@
+@import './variables.less';
+
+.colorBtn(@color) {
+  background: @color;
+  &:hover {
+    color: #fff;
+    background: lighten(@color, 6.5%);
+  }
+}
+
+.blue-btn {
+  .colorBtn(@blue);
+}
+
+.light-blue-btn {
+  .colorBtn(@light-blue);
+}
+
+.red-btn {
+  .colorBtn(@red);
+}
+
+.pink-btn {
+  .colorBtn(@pink);
+}
+
+.green-btn {
+  .colorBtn(@green);
+}
+
+.tiffany-btn {
+  .colorBtn(@tiffany);
+}
+
+.yellow-btn {
+  .colorBtn(@yellow);
+}
+
+.pan-btn {
+  font-size: 14px;
+  color: #fff;
+  height: 32px;
+  padding: 0 15px;
+  border-radius: 4px;
+  outline: none;
+  transition: 600ms ease all;
+  position: relative;
+  display: inline-block;
+  border: 1px solid transparent;
+  cursor: pointer;
+  &:hover {
+    &:before,
+    &:after {
+      transition: 600ms ease all;
+    }
+  }
+}
