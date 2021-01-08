@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    
+    <img src="../../assets/bg1.png" alt="" srcset="">
+    <img src="../../assets/bg.png" alt="" srcset="">
   </div>
 </template>
 
