@@ -36,10 +36,14 @@
 
 <script lang="ts">
 import { reactive, toRaw } from 'vue';
+import { useRouter, onBeforeRouteUpdate } from 'vue-router';
 import { useForm } from '@ant-design-vue/use';
+import Route from '@/utils/route';
 export default {
   name: 'MenuSetUpdate',
   setup() {
+    const route = reactive(Route.getRoute().query);
+    console.log(route);
     const form = reactive({
       scope: undefined
     });
@@ -62,9 +66,16 @@ export default {
           console.log('error', err);
         });
     };
+    const router = useRouter();
     const goBack = function () {
-      console.log('goBack');
+      router.push({
+        path: '/?id=1'
+      });
     };
+    onBeforeRouteUpdate((to) => {
+      console.log(to);
+      console.log(Route.getRoute().query);
+    });
     return {
       form,
       validateInfos,
