@@ -2,15 +2,17 @@
 const path = require('path');
 const lessToJs = require('less-vars-to-js');
 const fs = require('fs');
-
+const config = require('./config');
+const flag = process.argv.find((item) => {
+  return item === 'build';
+});
 const theme = lessToJs(
   fs.readFileSync(path.join(__dirname, './src/styles/variables.less'), 'utf8')
 );
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/test/' : '/',
-  outputDir: 'dist',
-  assetsDir: 'dist',
+  publicPath: flag ? config.cdnBucketPath : './',
+  // outputDir: 'dist',
   indexPath: 'index.html',
   // 配置命令行输出异常 Type: boolean | 'warning' | 'default' | 'error'
   lintOnSave: process.env.NODE_ENV === 'production' ? false : 'default',
